@@ -2,7 +2,7 @@ package cl.maotech.gateway.dto;
 
 public class User {
     private Integer userId;
-    private String email;
+    private String eemail;
     private String password;
     private String rut;
     private String firstName;
@@ -16,11 +16,11 @@ public class User {
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
-    public String getEmail() {
-        return email;
+    public String getEemail() {
+        return eemail;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEemail(String eemail) {
+        this.eemail = eemail;
     }
     public String getPassword() {
         return password;

@@ -1,14 +1,14 @@
 package cl.maotech.gateway.dto;
 
 public class AuthRequest {
-    private String mail;
+    private String email;
     private String password;
     
-    public String getMail() {
-        return mail;
+    public String getemail() {
+        return email;
     }
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setemail(String email) {
+        this.email = email;
     }
     public String getPassword() {
         return password;
