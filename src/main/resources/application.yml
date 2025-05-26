@@ -4,61 +4,37 @@ server:
 spring:
   application:
     name: gateway-service
-  cloud:
-    gateway:
-      routes:
-        # Rutas para Auth Service
-        - id: auth-service
-          uri: http://localhost:8081
-          predicates:
-            - Path=/api/auth/**
-          filters:
-            - StripPrefix=1
 
-        # Rutas para User Service
-        - id: user-service
-          uri: http://localhost:8082
-          predicates:
-            - Path=/api/users/**
-          filters:
-            - StripPrefix=1
+# Configuración de los microservicios
+microservices:
+  auth-service:
+    url: http://localhost:8081
+  user-service:
+    url: http://localhost:8082
+  course-service:
+    url: http://localhost:8083
+  content-service:
+    url: http://localhost:8084
 
-        # Rutas para Course Service
-        - id: course-service
-          uri: http://localhost:8083
-          predicates:
-            - Path=/api/courses/**
-          filters:
-            - StripPrefix=1
+# Configuración de Feign
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
 
-        # Rutas para Content Service
-        - id: content-service
-          uri: http://localhost:8084
-          predicates:
-            - Path=/api/content/**
-          filters:
-            - StripPrefix=1
-
-      globalcors:
-        cors-configurations:
-          '[/**]':
-            allowedOrigins: "*"
-            allowedMethods:
-              - GET
-              - POST
-              - PUT
-              - DELETE
-              - OPTIONS
-            allowedHeaders: "*"
-            allowCredentials: false
-
-logging:
-  level:
-    org.springframework.cloud.gateway: DEBUG
-    org.springframework.web: DEBUG
-
+# Actuator para monitoreo
 management:
   endpoints:
     web:
       exposure:
-        include: health,info,gateway
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    cl.maotech.gateway_service: DEBUG
+    feign: DEBUG
