@@ -8,21 +8,21 @@ import java.util.List;
 @FeignClient(name = "content-service", url = "${microservices.content-service.url}")
 public interface ContentServiceClient {
 
-    @PostMapping("/content")
+    @PostMapping("v2/content")
     Object createContent(@RequestBody Object content);
 
-    @GetMapping("/content")
+    @GetMapping("v2/content")
     List<Object> getAllContents();
 
-    @GetMapping("/content/search")
+    @GetMapping("v2/content/search")
     List<Object> getContentByTypeAndStatus(@RequestParam String type, @RequestParam String status);
 
-    @GetMapping("/content/{id}")
+    @GetMapping("v2/content/{id}")
     Object getContentById(@PathVariable Long id);
 
-    @PutMapping("/content/{id}")
+    @PutMapping("v2/content/{id}")
     Object updateContent(@PathVariable Long id, @RequestBody Object content);
 
-    @DeleteMapping("/content/{id}")
+    @DeleteMapping("v2/content/{id}")
     void deleteContent(@PathVariable Long id);
 }
