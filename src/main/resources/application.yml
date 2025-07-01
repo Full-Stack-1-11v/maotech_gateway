@@ -7,7 +7,7 @@ spring:
 
 # Configuración de los microservicios
 microservices:
-  auth-service:
+  review-service:
     url: http://localhost:8081
   user-service:
     url: http://localhost:8082
