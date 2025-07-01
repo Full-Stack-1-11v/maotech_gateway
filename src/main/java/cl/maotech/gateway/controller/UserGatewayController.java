@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/users")
 public class UserGatewayController {
@@ -14,19 +12,18 @@ public class UserGatewayController {
     @Autowired
     private UserServiceClient userServiceClient;
     
-    // User endpoints
     @PostMapping("/create")
     public ResponseEntity<Object> createUser(@RequestBody Object user) {
         return userServiceClient.createUser(user);
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<Object>> listUsersAsDto() {
+    public ResponseEntity<Object> listUsersAsDto() {
         return userServiceClient.listUsersAsDto();
     }
 
     @GetMapping("/list/admin")
-    public ResponseEntity<List<Object>> listUsers() {
+    public ResponseEntity<Object> listUsers() {
         return userServiceClient.listUsers();
     }
 
@@ -66,12 +63,12 @@ public class UserGatewayController {
     }
 
     @GetMapping("/inactives/admin")
-    public ResponseEntity<List<Object>> findInactiveUsers() {
+    public ResponseEntity<Object> findInactiveUsers() {
         return userServiceClient.findInactiveUsers();
     }
 
     @GetMapping("/inactives")
-    public ResponseEntity<List<Object>> findInactiveUsersDto() {
+    public ResponseEntity<Object> findInactiveUsersDto() {
         return userServiceClient.findInactiveUsersDto();
     }
 
@@ -85,14 +82,13 @@ public class UserGatewayController {
         return userServiceClient.loginUser(user);
     }
 
-    // Role endpoints
     @PostMapping("/roles/create")
     public ResponseEntity<Object> createRole(@RequestBody Object role) {
         return userServiceClient.createRole(role);
     }
 
     @GetMapping("/roles/list")
-    public ResponseEntity<List<Object>> listRoles() {
+    public ResponseEntity<Object> listRoles() {
         return userServiceClient.listRoles();
     }
 
