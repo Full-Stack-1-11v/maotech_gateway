@@ -4,8 +4,6 @@ import cl.maotech.gateway.client.ContentServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/content")
 public class ContentGatewayController {
@@ -14,12 +12,12 @@ public class ContentGatewayController {
     private ContentServiceClient contentServiceClient;
     
     @GetMapping("/list")
-    public List<Object> getAllContents() {
+    public Object getAllContents() {
         return contentServiceClient.getAllContents();
     }
 
     @GetMapping("/search")
-    public List<Object> searchContent(@RequestParam String type, @RequestParam String status) {
+    public Object searchContent(@RequestParam String type, @RequestParam String status) { 
         return contentServiceClient.getContentByTypeAndStatus(type, status);
     }
     
